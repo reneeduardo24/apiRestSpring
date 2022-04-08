@@ -11,10 +11,9 @@ import java.util.Optional;
 @Service
 public class PersonaService implements BaseService<Persona> {
 
-
     private PersonaRepository personaRepository;
 
-    public PersonaService(PersonaRepository personaRepository){
+    public PersonaService( PersonaRepository personaRepository){
         this.personaRepository = personaRepository;
     }
 
@@ -24,7 +23,7 @@ public class PersonaService implements BaseService<Persona> {
         try{
             List<Persona> entities = personaRepository.findAll();
             return entities;
-        }catch(Exception e){
+        } catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
@@ -35,7 +34,7 @@ public class PersonaService implements BaseService<Persona> {
         try{
             Optional<Persona> entityOptional = personaRepository.findById(id);
             return entityOptional.get();
-        }catch(Exception e){
+        } catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
@@ -46,7 +45,7 @@ public class PersonaService implements BaseService<Persona> {
         try{
             entity = personaRepository.save(entity);
             return entity;
-        }catch(Exception e){
+        } catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
@@ -57,9 +56,9 @@ public class PersonaService implements BaseService<Persona> {
         try{
             Optional<Persona> entityOptional = personaRepository.findById(id);
             Persona persona = entityOptional.get();
-            persona = personaRepository.save(persona);
+            persona = personaRepository.save(entity);
             return persona;
-        }catch(Exception e){
+        } catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
@@ -71,10 +70,10 @@ public class PersonaService implements BaseService<Persona> {
             if (personaRepository.existsById(id)){
                 personaRepository.deleteById(id);
                 return true;
-            } else{
+            } else {
                 throw new Exception();
             }
-        }catch(Exception e){
+        } catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
